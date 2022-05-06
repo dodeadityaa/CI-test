@@ -1,0 +1,184 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class login extends CI_Controller
+{
+
+	/**
+	 * Index Page for this controller.
+	 *
+	 * Maps to the following URL
+	 * 		http://example.com/index.php/welcome
+	 *	- or -
+	 * 		http://example.com/index.php/welcome/index
+	 *	- or -
+	 * Since this controller is set as the default controller in
+	 * config/routes.php, it's displayed at http://example.com/
+	 *
+	 * So any other public methods not prefixed with an underscore will
+	 * map to /index.php/welcome/<method_name>
+	 * @see https://codeigniter.com/user_guide/general/urls.html
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->library('form_validation');
+		$this->load->model('registeran');
+	}
+	public function index()
+	{
+		if ($this->form_validation->run() == false) {
+			$this->load->view('login');
+			$this->session->set_flashdata('message', '<div class="alert alert-Danger" role="alert">Password salah !!!</div>');
+		} else {
+			$this->_login();
+		}
+	}
+
+	private function _login()
+	{
+		$email = $this->input->post('email');
+		$password = $this->input->post('password');
+
+		$user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+		if ($user) {
+			if (password_verify($password, $user['password'])) {
+				$data = [
+					'email' => $user['email']
+				];
+				$this->session->set_userdata($data);
+				redirect('dashboard');
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password salah !!!</div>');
+				redirect('login');
+			}
+		} else {
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Email salah !!!</div>');
+			redirect('login');
+		}
+	}
+}
+
+
+
+
+//lainnya login
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class login extends CI_Controller
+{
+
+	/**
+	 * Index Page for this controller.
+	 *
+	 * Maps to the following URL
+	 * 		http://example.com/index.php/welcome
+	 *	- or -
+	 * 		http://example.com/index.php/welcome/index
+	 *	- or -
+	 * Since this controller is set as the default controller in
+	 * config/routes.php, it's displayed at http://example.com/
+	 *
+	 * So any other public methods not prefixed with an underscore will
+	 * map to /index.php/welcome/<method_name>
+	 * @see https://codeigniter.com/user_guide/general/urls.html
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->library('form_validation');
+	}
+	public function index()
+	{
+		if ($this->form_validation->run() == FALSE) {
+			if (isset($this->session->userdata['logged_in'])) {
+				$this->load->view('dashboard');
+			} else {
+				$this->load->view('login');
+			}
+		} else {
+			$data = array(
+				'email' => $this->input->post('email'),
+				'password' => $this->input->post('password')
+			);
+			$result = $this->login_database->login($data);
+			if ($result == TRUE) {
+
+				$email = $this->input->post('email');
+				$result = $this->login_database->read_user_information($email);
+				if ($result != false) {
+					$session_data = array(
+						'email' => $result[0]->user_email,
+					);
+					// Add user data in session
+					$this->session->set_userdata('logged_in', $session_data);
+					$this->load->view('dashboard');
+				}
+			} else {
+				$data = array(
+					'error_message' => 'Invalid Username or Password'
+				);
+				$this->load->view('login_form', $data);
+			}
+		}
+	}
+
+	// Check for user login process
+	public function user_login_process()
+	{
+		//
+	}
+
+	// Logout from admin page
+	public function logout()
+	{
+
+		// Removing session data
+		$sess_array = array(
+			'email' => ''
+		);
+		$this->session->unset_userdata('logged_in', $sess_array);
+		$data['message_display'] = 'Successfully Logout';
+		$this->load->view('login_form', $data);
+	}
+}
+
+
+
+// edit controller
+public function lihat($koperasi_id)
+{
+	$this->db->select('*');
+	$this->db->from('koperasi');
+	$this->db->where('id', $koperasi_id);
+
+	return $this->db->get();
+}
+public function get_edit($koperasi_id)
+{
+	$data['pengguna'] = $this->mselect->lihat($koperasi_id)->row();
+	$this->load->view('crud/edit', $data);
+}
+
+
+function get_edit()
+    {
+        $koperasi_id = $this->uri->segment(3);
+        $data['koperasi_id'] = $koperasi_id;
+        $get_data = $this->mselect->get_koperasi_by_id($koperasi_id);
+        if ($get_data->num_rows() > 0) {
+            $row = $get_data->row_array();
+            $data['id'] = $row['id_kecamatan'];
+        }
+        $this->load->view('crud/edit', $data);
+    }
+
+    function get_data_edit()
+    {
+        $koperasi_id = $this->input->post('koperasi_id', TRUE);
+        $data = $this->mselect->get_koperasi_by_id($koperasi_id)->result();
+        echo json_encode($data);
+    }
+    //edit koperasi
