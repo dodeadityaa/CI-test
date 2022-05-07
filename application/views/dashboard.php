@@ -23,6 +23,7 @@
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
+        <?php $this->load->view('bagian/menuadmin') ?>
         <!-- Content Wrapper. Contains page content -->
         <div>
             <!-- Content Header (Page header) -->

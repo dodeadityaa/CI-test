@@ -32,17 +32,8 @@ class awal extends CI_Controller
     }
     function show($koperasi_id)
     {
-        $koperasi_id = $this->uri->segment(3);
-        $data['koperasidata'] = $koperasi_id;
-        $data['koperasii'] = $this->mselect->get_koperasi()->result();
-        $get_data = $this->mselect->get_koperasi_by_id($koperasi_id);
-        if ($get_data->num_rows() > 0) {
-            $row = $get_data->row_array();
-            $data['kabkots'] = $row['id_kabkot'];
-            $data['kecamatans'] = $row['id_kecamatan'];
-            $data['desas'] = $row['id_desa'];
-        }
-        $this->load->view('crud/show', $data);
+        $data['koperasii'] = $this->mselect->getById($koperasi_id);
+        $this->load->view('crud/show', $data, $data);
     }
 
     function get_data_show()

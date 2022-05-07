@@ -55,7 +55,6 @@ class Select extends CI_Controller
         $namamanager            = $this->input->post('nama_manager', TRUE);
         $jumlahpria             = $this->input->post('jumlah_anggota_pria', TRUE);
         $jumlahwanita           = $this->input->post('jumlah_anggota_wanita', TRUE);
-        $totall                 = $this->input->post('total_anggota', TRUE);
         $noindukkoperasi        = $this->input->post('no_koperasi', TRUE);
         $statusnik              = $this->input->post('status_nik', TRUE);
         $tanggalsertifikat      = $this->input->post('tanggal_sertifikat', TRUE);
@@ -79,7 +78,6 @@ class Select extends CI_Controller
             $namamanager,
             $jumlahpria,
             $jumlahwanita,
-            $totall,
             $noindukkoperasi,
             $statusnik,
             $tanggalsertifikat,
@@ -112,7 +110,6 @@ class Select extends CI_Controller
         $namamanager            = $this->input->post('nama_manager', TRUE);
         $jumlahpria             = $this->input->post('jumlah_anggota_pria', TRUE);
         $jumlahwanita           = $this->input->post('jumlah_anggota_wanita', TRUE);
-        $totall                 = $this->input->post('total_anggota', TRUE);
         $noindukkoperasi        = $this->input->post('no_koperasi', TRUE);
         $statusnik              = $this->input->post('status_nik', TRUE);
         $tanggalsertifikat      = $this->input->post('tanggal_sertifikat', TRUE);
@@ -137,7 +134,6 @@ class Select extends CI_Controller
             $namamanager,
             $jumlahpria,
             $jumlahwanita,
-            $totall,
             $noindukkoperasi,
             $statusnik,
             $tanggalsertifikat,

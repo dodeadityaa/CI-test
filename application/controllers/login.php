@@ -58,4 +58,12 @@ class login extends CI_Controller
 			redirect('login');
 		}
 	}
+	public function logout()
+	{
+		$this->session->sess_destroy();
+		$this->load->driver('cache');
+		$this->cache->clean();
+		ob_clean();
+		redirect('login');
+	}
 }

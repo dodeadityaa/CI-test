@@ -31,6 +31,7 @@
 
 <body>
     <div class="wrapper">
+        <?php $this->load->view('bagian/menuadmin') ?>
         <!-- Navbar -->
         <!-- /.navbar -->
         <!-- Content Header (Page header) -->
@@ -54,55 +55,53 @@
                                     <h3 class="card-title">Data Koperasi</h3>
                                 </div>
                                 <div class="">
-                                    <input type="text" name="koperasi_id" id="koperasi_id" value="<?php echo $koperasidata; ?>" />
+                                    <input type="hidden" name="koperasi_id" id="koperasi_id" value="<?php echo $koperasii->id; ?>" />
                                     <div class="form-group">
                                         <label>Kota/Kabupaten</label>
-                                        <select name="kabkotss2" id="kabkotss2" class="form-control input-lg kabkotss2" data-dependent="KabupatenKota">
-                                            <?php foreach ($koperasii as $row) : ?>
-                                                <option value="<?php echo $row->id; ?>" selected><?php echo $row->nama_kabkot; ?></option>
-                                            <?php endforeach; ?>
+                                        <select name="kabkotss2" id="kabkotss2" class="form-control input-lg kabkotss2" required onkeypress="return ;" data-dependent="KabupatenKota">
+                                            <option value="<?php echo $koperasii->id_kabkot; ?>" selected><?php echo $koperasii->id_kabkot; ?></option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Kecamatan</label>
-                                        <select name="kecamm2" id="kecamm2" class="form-control input-lg kecamm2" data-dependent="kecamm2">
-                                            <option value="<?php echo $row->id; ?>" selected><?php echo $row->nama_kecamatan; ?></option>
+                                        <select name="kecamm2" id="kecamm2" class="form-control input-lg kecamm2" required onkeypress="return ;" data-dependent="kecamm2">
+                                            <option value="<?php echo $koperasii->id_kecamatan; ?>" selected><?php echo $koperasii->id_kecamatan; ?></option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Desa</label>
-                                        <select name="desass2" id="desass2" class="form-control input-lg desass2" data-dependent="desass2">
-                                            <option value="<?php echo $row->id; ?>" selected><?php echo $row->nama_desa; ?></option>
+                                        <select name="desass2" id="desass2" class="form-control input-lg desass2" required onkeypress="return ;" data-dependent="desass2">
+                                            <option value="<?php echo $koperasii->id_desa; ?>" selected><?php echo $koperasii->id_desa; ?></option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="nama_koperasi">Nama Koperasi<span class="required">*</span></label>
-                                        <input type="text" class="form-control" id="nama_koperasi" name="nama_koperasi" value="<?php echo $row->nama_koperasi; ?>" placeholder="masukan Nama Koperasi" required onkeypress="return;">
+                                        <input type="text" class="form-control" id="nama_koperasi" name="nama_koperasi" value="<?php echo $koperasii->nama_koperasi; ?>" placeholder="masukan Nama Koperasi" required onkeypress="return;">
                                     </div>
                                     <div class="form-group">
                                         <label for="alamat">Alamat<span class="required">*</span></label>
-                                        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="masukan Alamat" value="<?php echo $row->alamat; ?>" required onkeypress="return ;">
+                                        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="masukan Alamat" value="<?php echo $koperasii->alamat; ?>" required onkeypress="return ;">
                                     </div>
                                     <div class=" form-group">
                                         <label for="no_badan_hukum">Nomor Badan Hukum Pendirian</label>
-                                        <input type="text" class="form-control" id="no_badan_hukum" name="no_badan_hukum" value="<?php echo $row->no_badan_hukum; ?>" placeholder="51010100010011xxxx">
+                                        <input type="text" class="form-control" id="no_badan_hukum" name="no_badan_hukum" value="<?php echo $koperasii->no_badan_hukum; ?>" placeholder="51010100010011xxxx">
                                     </div>
                                     <div class="form-group">
                                         <label for="tanggal_badan_hukum">Tanggal Badan Hukum Pendirian</label>
-                                        <input type="date" class="form-control" id="tanggal_badan_hukum" name="tanggal_badan_hukum" value="<?php echo $row->tanggal_badan_hukum; ?>" placeholder="Masukan Nama Kepala Rumah Tangga">
+                                        <input type="date" class="form-control" id="tanggal_badan_hukum" name="tanggal_badan_hukum" value="<?php echo $koperasii->tanggal_badan_hukum; ?>" placeholder="Masukan Nama Kepala Rumah Tangga">
                                     </div>
                                     <div class="form-group">
                                         <label>Bentuk Koperasi</label>
-                                        <select name="bentuk_koperasi" id="bentuk_koperasi" class="form-control input-lg dynamic" data-dependent="bentuk_koperasis">
-                                            <option><?php echo $row->bentuk_koperasi; ?></option>
-                                            <option>Primer Kabupaten/Kota</option>
-                                            <option>Sekunder Kabupaten/Kota</option>
+                                        <select name="bentuk_koperasi" id="bentuk_koperasi" class="form-control input-lg dynamic" required onkeypress="return ;" data-dependent="bentuk_koperasis" required onkeypress="return ;">
+                                            <option value="">masukan Keterangan</option>
+                                            <option value="<?php echo $koperasii->bentuk_koperasi; ?>" selected>Primer Kabupaten/Kota</option>
+                                            <option value="<?php echo $koperasii->bentuk_koperasi; ?>" selected>Sekunder Kabupaten/Kota</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Jenis Koperasi</label>
-                                        <select name="jenis_koperasi" id="jenis_koperasi" class="form-control input-lg dynamic" data-dependent="jenis_koperasis">
-                                            <option><?php echo $row->jenis_koperasi; ?></option>
+                                        <select name="jenis_koperasi" id="jenis_koperasi" class="form-control input-lg dynamic" required onkeypress="return ;" data-dependent="jenis_koperasis">
+                                            <option><?php echo $koperasii->jenis_koperasi; ?></option>
                                             <option>Simpan Pinjam</option>
                                             <option>Konsumen</option>
                                             <option>produsen</option>
@@ -112,8 +111,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Kelompok Koperasi</label>
-                                        <select name="kelompok_koperasi" id="kelompok_koperasi" class="form-control input-lg dynamic" data-dependent="kelompok_koperasis">
-                                            <option><?php echo $row->kelompok_koperasi; ?></option>
+                                        <select name="kelompok_koperasi" id="kelompok_koperasi" class="form-control input-lg dynamic" required onkeypress="return ;" data-dependent="kelompok_koperasis">
+                                            <option><?php echo $koperasii->kelompok_koperasi; ?></option>
                                             <option>Kop. Simpan Pinjam</option>
                                             <option>Kop. Konsumen</option>
                                             <option>Kop. produsen</option>
@@ -123,8 +122,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Sektor Usaha</label>
-                                        <select name="sektor_usaha" id="sektor_usaha" class="form-control input-lg dynamic" data-dependent="sektor_usahas">
-                                            <option><?php echo $row->sektor_usaha; ?></option>
+                                        <select name="sektor_usaha" id="sektor_usaha" class="form-control input-lg dynamic" required onkeypress="return ;" data-dependent="sektor_usahas">
+                                            <option><?php echo $koperasii->sektor_usaha; ?></option>
                                             <option>Jasa Angkutan</option>
                                             <option>Jasa Perlayaran</option>
                                             <option>Jasa Fotokopi</option>
@@ -146,28 +145,28 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="nama_koperasi">Nama Ketua<span class="required">*</span></label>
-                                        <input type="text" class="form-control" id="nama_ketua" name="nama_ketua" value="<?php echo $row->nama_ketua; ?>" placeholder=" masukan Nama Ketua" required onkeypress="return;">
+                                        <input type="text" class="form-control" id="nama_ketua" name="nama_ketua" value="<?php echo $koperasii->nama_ketua; ?>" placeholder=" masukan Nama Ketua" required onkeypress="return;">
                                     </div>
                                     <div class="form-group">
                                         <label for="nama_koperasi">Nama Sekertaris<span class="required">*</span></label>
-                                        <input type="text" class="form-control" id="nama_sekertaris" name="nama_sekertaris" value="<?php echo $row->nama_sekertaris; ?>" placeholder=" masukan Nama Sekertaris" required onkeypress="return ;">
+                                        <input type="text" class="form-control" id="nama_sekertaris" name="nama_sekertaris" value="<?php echo $koperasii->nama_sekertaris; ?>" placeholder=" masukan Nama Sekertaris" required onkeypress="return ;">
                                     </div>
                                     <div class="form-group">
                                         <label for="nama_koperasi">Nama Bendahara<span class="required">*</span></label>
-                                        <input type="text" class="form-control" id="nama_bendahara" name="nama_bendahara" value="<?php echo $row->nama_bendahara; ?>" placeholder=" masukan Nama Bendahara" required onkeypress="return ;">
+                                        <input type="text" class="form-control" id="nama_bendahara" name="nama_bendahara" value="<?php echo $koperasii->nama_bendahara; ?>" placeholder=" masukan Nama Bendahara" required onkeypress="return ;">
                                     </div>
                                     <div class="form-group">
                                         <label for="nama_koperasi">Nama Pengawas<span class="required">*</span></label>
-                                        <input type="text" class="form-control" id="nama_pengawas" name="nama_pengawas" value="<?php echo $row->nama_pengawas; ?>" placeholder=" masukan Nama Pengawas" required onkeypress="return ;">
+                                        <input type="text" class="form-control" id="nama_pengawas" name="nama_pengawas" value="<?php echo $koperasii->nama_pengawas; ?>" placeholder=" masukan Nama Pengawas" required onkeypress="return ;">
                                     </div>
                                     <div class="form-group">
                                         <label for="nama_koperasi">Nama Manager<span class="required">*</span></label>
-                                        <input type="text" class="form-control" id="nama_manager" name="nama_manager" value="<?php echo $row->nama_manager; ?>" placeholder=" masukan Nama Manager" required onkeypress="return ;">
+                                        <input type="text" class="form-control" id="nama_manager" name="nama_manager" value="<?php echo $koperasii->nama_manager; ?>" placeholder=" masukan Nama Manager" required onkeypress="return ;">
                                     </div>
                                     <div class="form-group">
                                         <label>Jumlah Anggota Pria</label>
-                                        <select name="jumlah_anggota_pria" id="jumlah_anggota_pria" class="form-control input-lg dynamic" data-dependent="jumlah_anggota_prias">
-                                            <option value=""><?php echo $row->jumlah_anggota_pria; ?></option>
+                                        <select name="jumlah_anggota_pria" id="jumlah_anggota_pria" class="form-control input-lg dynamic" required onkeypress="return ;" data-dependent="jumlah_anggota_prias">
+                                            <option value="<?php echo $koperasii->jumlah_anggota_pria; ?>"><?php echo $koperasii->jumlah_anggota_pria; ?></option>
                                             <?php
                                             for ($x = 1; $x <= 1000; $x++) {
                                                 echo "<option value='$x'>$x</option>";
@@ -178,18 +177,7 @@
                                     <div class="form-group">
                                         <label>Jumlah Anggota Wanita</label>
                                         <select name="jumlah_anggota_wanita" class="custom-select" id="selectStores">
-                                            <option value=""><?php echo $row->jumlah_anggota_wanita; ?></option>
-                                            <?php
-                                            for ($x = 1; $x <= 1000; $x++) {
-                                                echo "<option value='$x'>$x</option>";
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Total Anggota</label>
-                                        <select name="total_anggota" class="custom-select" id="selectStores">
-                                            <option value=""><?php echo $row->total_anggota; ?></option>
+                                            <option value="<?php echo $koperasii->jumlah_anggota_wanita; ?>"><?php echo $koperasii->jumlah_anggota_wanita; ?></option>
                                             <?php
                                             for ($x = 1; $x <= 1000; $x++) {
                                                 echo "<option value='$x'>$x</option>";
@@ -199,24 +187,24 @@
                                     </div>
                                     <div class=" form-group">
                                         <label for="no_koperasi">Nomor Induk Koperasi (NIK)</label>
-                                        <input type="text" class="form-control" id="no_koperasi" name="no_koperasi" value="<?php echo $row->no_koperasi; ?>" placeholder="51010100010011xxxx">
+                                        <input type="text" class="form-control" id="no_koperasi" name="no_koperasi" value="<?php echo $koperasii->no_koperasi; ?>" placeholder="51010100010011xxxx">
                                     </div>
                                     <div class="form-group">
                                         <label>Status NIK</label>
-                                        <select name="status_nik" id="status_nik" class="form-control input-lg dynamic" data-dependent="status_niks">
-                                            <option><?php echo $row->status_nik; ?></option>
+                                        <select name="status_nik" id="status_nik" class="form-control input-lg dynamic" required onkeypress="return ;" data-dependent="status_niks">
+                                            <option><?php echo $koperasii->status_nik; ?></option>
                                             <option>Sertifikat - Aktif</option>
                                             <option>Sertifikat - Expired</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="tanggal_sertifikat">Tanggal Berlaku Sertifikat</label>
-                                        <input type="date" class="form-control" id="tanggal_sertifikat" name="tanggal_sertifikat" value="<?php echo $row->tanggal_sertifikat; ?>" placeholder="Masukan Nama Kepala Rumah Tangga">
+                                        <input type="date" class="form-control" id="tanggal_sertifikat" name="tanggal_sertifikat" value="<?php echo $koperasii->tanggal_sertifikat; ?>" placeholder="Masukan Nama Kepala Rumah Tangga">
                                     </div>
                                     <div class="form-group">
                                         <label>Status Grade</label>
-                                        <select name="status_grade" id="status_grade" class="form-control input-lg dynamic" data-dependent="status_grades">
-                                            <option><?php echo $row->status_grade; ?></option>
+                                        <select name="status_grade" id="status_grade" class="form-control input-lg dynamic" required onkeypress="return ;" data-dependent="status_grades">
+                                            <option><?php echo $koperasii->status_grade; ?></option>
                                             <option>A</option>
                                             <option>B</option>
                                             <option>C</option>

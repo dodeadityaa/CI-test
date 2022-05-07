@@ -33,24 +33,8 @@ class dashboard extends CI_Controller
     //edit koperasi
     function edit($koperasi_id)
     {
-        $koperasi_id = $this->uri->segment(3);
-        $data['koperasidata'] = $koperasi_id;
-        $data['koperasii'] = $this->mselect->get_koperasi()->result();
-        $get_data = $this->mselect->get_koperasi_by_id($koperasi_id);
-        if ($get_data->num_rows() > 0) {
-            $row = $get_data->row_array();
-            $data['kabkots'] = $row['id_kabkot'];
-            $data['kecamatans'] = $row['id_kecamatan'];
-            $data['desas'] = $row['id_desa'];
-        }
+        $data['koperasii'] = $this->mselect->getById($koperasi_id);
         $this->load->view('crud/edit', $data);
-    }
-
-    function get_data_edit()
-    {
-        $koperasi_id = $this->input->post('koperasi_id', TRUE);
-        $data = $this->mselect->get_koperasi_by_id($koperasi_id)->result();
-        echo json_encode($data);
     }
     //edit koperasi
     //tampilan input data dan show kecamatan

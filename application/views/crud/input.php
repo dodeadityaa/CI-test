@@ -31,6 +31,7 @@
 
 <body>
     <div class="wrapper">
+        <?php $this->load->view('bagian/menuadmin') ?>
         <!-- Navbar -->
         <!-- /.navbar -->
         <!-- Content Header (Page header) -->
@@ -181,17 +182,6 @@
                                         <label>Jumlah Anggota Wanita</label>
                                         <select name="jumlah_anggota_wanita" class="custom-select" id="selectStores">
                                             <option value="">Masukan Jumlah Anggota Wanita</option>
-                                            <?php
-                                            for ($x = 1; $x <= 1000; $x++) {
-                                                echo "<option value='$x'>$x</option>";
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Total Anggota</label>
-                                        <select name="total_anggota" class="custom-select" id="selectStores">
-                                            <option value="">Total Anggota</option>
                                             <?php
                                             for ($x = 1; $x <= 1000; $x++) {
                                                 echo "<option value='$x'>$x</option>";

@@ -42,11 +42,6 @@
 
 
         <script src="/bundles/MsAjaxJs?v=c42ygB2U07n37m_Sfa8ZbLGVu4Rr2gsBo7MvUEnJeZ81" type="text/javascript"></script>
-        <script type="text/javascript">
-            //<![CDATA[
-            if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
-            //]]>
-        </script>
 
         <script src="Scripts/jquery-1.10.2.js" type="text/javascript"></script>
         <script src="Scripts/bootstrap.js" type="text/javascript"></script>
@@ -64,59 +59,58 @@
             //]]>
         </script>
         <br />
-        <div class="row">
+        <div class="koperasii">
             <div>
+                <input type="hidden" name="koperasi_id" id="koperasi_id" value="<?php echo $koperasii->id; ?>" />
                 <table cellspacing="1" cellpadding="4" rules="cols" id="MainContent_DetailsView1" style="color:Black;background-color:White;border-color:#DEDFDE;border-width:1px;border-style:None;height:60px;width:90%;">
                     <tr style="background-color:#D0E2F8;">
                         <td style="color:White;background-color:#6B696B;font-weight:bold;">DATA KOPERASI</td>
                         <td style="color:White;background-color:#6B696B;font-weight:bold;white-space:nowrap;">&nbsp;</td>
                     </tr>
-                    <?php foreach ($koperasii as $row) : ?>
-                    <?php endforeach; ?>
                     <tr style="background-color:White;">
                         <td style="white-space:nowrap;">Nama Koperasi</td>
-                        <td style="white-space:nowrap;"><?php echo $row->nama_koperasi; ?></td>
+                        <td style="white-space:nowrap;"><?php echo $koperasii->nama_koperasi; ?></td>
                     </tr>
 
                     <tr style="background-color:#D0E2F8;">
                         <td style="white-space:nowrap;">Nomor Badan Hukum Pendirian</td>
-                        <td style="white-space:nowrap;"><?php echo $row->no_badan_hukum; ?></td>
+                        <td style="white-space:nowrap;"><?php echo $koperasii->no_badan_hukum; ?></td>
                     </tr>
                     <tr style="background-color:White;">
                         <td style="white-space:nowrap;">Tanggal Badan Hukum Pendirian</td>
-                        <td style="white-space:nowrap;"><?php echo $row->tanggal_badan_hukum; ?></td>
+                        <td style="white-space:nowrap;"><?php echo $koperasii->tanggal_badan_hukum; ?></td>
                     </tr>
                     <tr style="background-color:#D0E2F8;">
                         <td>Alamat</td>
-                        <td><?php echo $row->alamat; ?></td>
+                        <td><?php echo $koperasii->alamat; ?></td>
                     </tr>
                     <tr style="background-color:White;">
                         <td style="white-space:nowrap;">Kelurahan / Desa</td>
-                        <td style="white-space:nowrap;"><?php echo $row->nama_desa; ?></td>
+                        <td style="white-space:nowrap;"><?php echo $koperasii->id_desa; ?></td>
                     </tr>
                     <tr style="background-color:#D0E2F8;">
                         <td style="white-space:nowrap;">Kecamatan</td>
-                        <td style="white-space:nowrap;"><?php echo $row->nama_kecamatan; ?></td>
+                        <td style="white-space:nowrap;"><?php echo $koperasii->id_kecamatan; ?></td>
                     </tr>
                     <tr style="background-color:White;">
                         <td style="white-space:nowrap;">Kabupaten</td>
-                        <td style="white-space:nowrap;"><?php echo $row->nama_kabkot; ?></td>
+                        <td style="white-space:nowrap;"><?php echo $koperasii->id_kabkot; ?></td>
                     </tr>
                     <tr style="background-color:#D0E2F8;">
                         <td style="white-space:nowrap;">Bentuk Koperasi</td>
-                        <td style="white-space:nowrap;"><?php echo $row->bentuk_koperasi; ?></td>
+                        <td style="white-space:nowrap;"><?php echo $koperasii->bentuk_koperasi; ?></td>
                     </tr>
                     <tr style="background-color:White;">
                         <td style="white-space:nowrap;">Jenis Koperasi</td>
-                        <td style="white-space:nowrap;"><?php echo $row->jenis_koperasi; ?></td>
+                        <td style="white-space:nowrap;"><?php echo $koperasii->jenis_koperasi; ?></td>
                     </tr>
                     <tr style="background-color:#D0E2F8;">
                         <td style="white-space:nowrap;">Kelompok Koperasi</td>
-                        <td style="white-space:nowrap;"><?php echo $row->kelompok_koperasi; ?></td>
+                        <td style="white-space:nowrap;"><?php echo $koperasii->kelompok_koperasi; ?></td>
                     </tr>
                     <tr style="background-color:White;">
                         <td style="white-space:nowrap;">Sektor Usaha</td>
-                        <td style="white-space:nowrap;"><?php echo $row->sektor_usaha; ?></td>
+                        <td style="white-space:nowrap;"><?php echo $koperasii->sektor_usaha; ?></td>
                     </tr>
                     <tr style="background-color:#D0E2F8;">
                         <td style="color:White;background-color:#6B696B;font-weight:bold;white-space:nowrap;">DATA PENGURUS</td>
@@ -124,23 +118,23 @@
                     </tr>
                     <tr style="background-color:White;">
                         <td style="white-space:nowrap;">Nama Ketua</td>
-                        <td style="white-space:nowrap;"><?php echo $row->nama_ketua; ?></td>
+                        <td style="white-space:nowrap;"><?php echo $koperasii->nama_ketua; ?></td>
                     </tr>
                     <tr style="background-color:#D0E2F8;">
                         <td style="white-space:nowrap;">Nama Sekretaris</td>
-                        <td style="white-space:nowrap;"><?php echo $row->nama_sekertaris; ?></td>
+                        <td style="white-space:nowrap;"><?php echo $koperasii->nama_sekertaris; ?></td>
                     </tr>
                     <tr style="background-color:White;">
                         <td style="white-space:nowrap;">Nama Bendahara</td>
-                        <td style="white-space:nowrap;"><?php echo $row->nama_bendahara; ?></td>
+                        <td style="white-space:nowrap;"><?php echo $koperasii->nama_bendahara; ?></td>
                     </tr>
                     <tr style="background-color:#D0E2F8;">
                         <td style="white-space:nowrap;">Nama Pengawas</td>
-                        <td style="white-space:nowrap;"><?php echo $row->nama_pengawas; ?></td>
+                        <td style="white-space:nowrap;"><?php echo $koperasii->nama_pengawas; ?></td>
                     </tr>
                     <tr style="background-color:White;">
                         <td style="white-space:nowrap;">Nama Manager</td>
-                        <td style="white-space:nowrap;"><?php echo $row->nama_manager; ?></td>
+                        <td style="white-space:nowrap;"><?php echo $koperasii->nama_manager; ?></td>
                     </tr>
                     <tr style="background-color:#D0E2F8;">
                         <td style="color:White;background-color:#6B696B;font-weight:bold;white-space:nowrap;">DATA KELEMBAGAAN</td>
@@ -148,15 +142,15 @@
                     </tr>
                     <tr style="background-color:White;">
                         <td style="white-space:nowrap;">Jumlah Anggota Pria</td>
-                        <td align="left" style="white-space:nowrap;"><?php echo $row->jumlah_anggota_pria; ?></td>
+                        <td align="left" style="white-space:nowrap;"><?php echo $koperasii->jumlah_anggota_pria; ?></td>
                     </tr>
                     <tr style="background-color:#D0E2F8;">
                         <td style="white-space:nowrap;">Jumlah Anggota Wanita</td>
-                        <td align="left" style="white-space:nowrap;"><?php echo $row->jumlah_anggota_wanita; ?></td>
+                        <td align="left" style="white-space:nowrap;"><?php echo $koperasii->jumlah_anggota_wanita; ?></td>
                     </tr>
                     <tr style="background-color:White;">
                         <td style="white-space:nowrap;">Total Anggota</td>
-                        <td align="left" style="white-space:nowrap;"><?php echo $row->total_anggota; ?></td>
+                        <td align="left" style="white-space:nowrap;"><?php echo $koperasii->jumlah_anggota_pria + $koperasii->jumlah_anggota_wanita; ?></td>
                     </tr>
                     <tr style="background-color:#D0E2F8;">
                         <td style="color:White;background-color:#6B696B;font-weight:bold;white-space:nowrap;">DATA LAINNYA</td>
@@ -164,19 +158,19 @@
                     </tr>
                     <tr style="background-color:White;">
                         <td style="white-space:nowrap;">Nomor Induk Koperasi (NIK)</td>
-                        <td style="white-space:nowrap;"><?php echo $row->no_koperasi; ?></td>
+                        <td style="white-space:nowrap;"><?php echo $koperasii->no_koperasi; ?></td>
                     </tr>
                     <tr style="background-color:#D0E2F8;">
                         <td style="white-space:nowrap;">Status NIK</td>
-                        <td style="white-space:nowrap;"><?php echo $row->status_nik; ?></td>
+                        <td style="white-space:nowrap;"><?php echo $koperasii->status_nik; ?></td>
                     </tr>
                     <tr style="background-color:White;">
                         <td style="white-space:nowrap;">Tanggal Berlaku Sertifikat</td>
-                        <td style="white-space:nowrap;"><?php echo $row->tanggal_sertifikat; ?></td>
+                        <td style="white-space:nowrap;"><?php echo $koperasii->tanggal_sertifikat; ?></td>
                     </tr>
                     <tr style="background-color:#D0E2F8;">
                         <td style="white-space:nowrap;">Status Grade </td>
-                        <td style="white-space:nowrap;"><?php echo $row->status_grade; ?></td>
+                        <td style="white-space:nowrap;"><?php echo $koperasii->status_grade; ?></td>
                     </tr>
 
                 </table>

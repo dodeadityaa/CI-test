@@ -26,7 +26,6 @@ class Select_model extends CI_Model
         nama_manager            ,
         jumlah_anggota_pria     ,
         jumlah_anggota_wanita   ,
-        total_anggota           ,
         no_koperasi             ,
         status_nik              ,
         tanggal_sertifikat      ,
@@ -40,6 +39,13 @@ class Select_model extends CI_Model
         return $query;
     }
     //show data koperasi
+    //show detail koperasi
+    private $table = "koperasi";
+    public function getById($koperasi_id)
+    {
+        return $this->db->get_where($this->table, ["id" => $koperasi_id])->row();
+    }
+    //show detail koperasi
     //edit data koperasi
     function get_koperasi_by_id($koperasi_id)
     {
@@ -68,7 +74,6 @@ class Select_model extends CI_Model
         $namamanager,
         $jumlahpria,
         $jumlahwanita,
-        $totall,
         $noindukkoperasi,
         $statusnik,
         $tanggalsertifikat,
@@ -92,7 +97,6 @@ class Select_model extends CI_Model
         $this->db->set('nama_manager', $namamanager);
         $this->db->set('jumlah_anggota_pria', $jumlahpria);
         $this->db->set('jumlah_anggota_wanita', $jumlahwanita);
-        $this->db->set('total_anggota', $totall);
         $this->db->set('no_koperasi', $noindukkoperasi);
         $this->db->set('status_nik', $statusnik);
         $this->db->set('tanggal_sertifikat', $tanggalsertifikat);
@@ -166,7 +170,6 @@ class Select_model extends CI_Model
             'nama_manager'              => $namamanager,
             'jumlah_anggota_pria'       => $jumlahpria,
             'jumlah_anggota_wanita'     => $jumlahwanita,
-            'total_anggota'             => $totall,
             'no_koperasi'               => $noindukkoperasi,
             'status_nik'                => $statusnik,
             'tanggal_sertifikat'        => $tanggalsertifikat,
