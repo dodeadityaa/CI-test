@@ -39,20 +39,36 @@ class Select_model extends CI_Model
         return $query;
     }
     //show data koperasi
-    //show detail koperasi
+    //edit dan show detail data koperasi
     private $table = "koperasi";
     public function getById($koperasi_id)
     {
         return $this->db->get_where($this->table, ["id" => $koperasi_id])->row();
     }
-    //show detail koperasi
-    //edit data koperasi
+
+    function get_koperasi_id($koperasi_id)
+    {
+        $this->db->select(
+            'koperasi.id                     ,
+                nama_kabkot            ,
+                nama_kecamatan            ,
+            nama_desa'
+        );
+        $this->db->from('koperasi');
+        $this->db->join('kabkot', 'kabkot.id = id_kabkot', 'inner');
+        $this->db->join('kecamatan', 'kecamatan.id = id_kecamatan', 'inner');
+        $this->db->join('desa', 'desa.id = id_desa', 'inner');
+        $this->db->where('koperasi.id', $koperasi_id);
+        $query = $this->db->get();
+        return $query;
+    }
+
     function get_koperasi_by_id($koperasi_id)
     {
         $query = $this->db->get_where('koperasi', array('id' =>  $koperasi_id));
         return $query;
     }
-    //edit data koperasi
+    //edit dan show detail data koperasi
     //update data koperasi
     public function update_koperasi(
         $koperasi_id,
@@ -145,7 +161,6 @@ class Select_model extends CI_Model
         $namamanager,
         $jumlahpria,
         $jumlahwanita,
-        $totall,
         $noindukkoperasi,
         $statusnik,
         $tanggalsertifikat,

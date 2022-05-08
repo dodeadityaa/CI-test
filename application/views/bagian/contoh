@@ -184,6 +184,24 @@ function edit($koperasi_id)
         $data = $this->mselect->get_koperasi_by_id($koperasi_id)->result();
         echo json_encode($data);
     }
+
+
+
+	function edit($koperasi_id)
+    {
+        $data['koperasii'] = $this->mselect->getById($koperasi_id);
+        $this->load->view('crud/edit', $data);
+    }
+
+
+	
+	$koperasiid = $this->mselect->getById($koperasi_id);
+	if (is_object($koperasiid)) {
+		$data['koperasii'] = $koperasiid;
+		$data['koperasi'] = $this->mselect->get_koperasi();
+		$this->load->view('crud/edit', $data);
+	} else {
+	}
     //edit koperasi
 
 	//navbar login

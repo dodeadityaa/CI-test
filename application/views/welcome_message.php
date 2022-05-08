@@ -22,7 +22,98 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
-  <h1>halo</h1>
+  <div class="wrapper">
+    <?php $this->load->view('bagian/menu') ?>
+    <!-- Content Wrapper. Contains page content -->
+    <div>
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Data Koperasi Bali</h1>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <div class="col-12">
+
+            <div class="card">
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Koperasi</th>
+                      <th>Nomor Badan Hukum</th>
+                      <th>Tanggal Badan Hukum</th>
+                      <th>Alamat</th>
+                      <th>Kecamatan</th>
+                      <th>NIK</th>
+                      <th>Sertifikat</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $no = 0;
+                    foreach ($koperasi->result() as $row) :
+                      $no++;
+                    ?>
+                      <tr>
+                        <td><?php echo $no; ?></td>
+                        <td><?php echo $row->nama_koperasi; ?></td>
+                        <td><?php echo $row->no_badan_hukum; ?></td>
+                        <td><?php echo $row->tanggal_badan_hukum; ?></td>
+                        <td><?php echo $row->alamat; ?></td>
+                        <td><?php echo $row->nama_kecamatan; ?></td>
+                        <td><?php echo $row->no_koperasi; ?></td>
+                        <td><?php echo $row->status_nik; ?></td>
+                        <td>
+                          <a href="<?php echo site_url('awal/show/' . $row->id); ?>" class="btn btn-sm btn-info">Detail</a>
+                          <!-- <a href="<?php echo site_url('dashboard/delete/' . $row->id); ?>" class="btn btn-sm btn-danger">Delete</a> -->
+                        </td>
+                      </tr>
+                    <?php endforeach; ?>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>No</th>
+                      <th>Koperasi</th>
+                      <th>Nomor Badan Hukum</th>
+                      <th>Tanggal Badan Hukum</th>
+                      <th>Alamat</th>
+                      <th>Kecamatan</th>
+                      <th>NIK</th>
+                      <th>Sertifikat</th>
+                      <th></th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>
   <!-- ./wrapper -->
 
   <!-- jQuery -->

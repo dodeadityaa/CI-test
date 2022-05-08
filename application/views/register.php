@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <?= $this->session->flashdata('message'); ?>
+    <?= $this->session->flashdata('mesage'); ?>
     <div class="container-login100">
         <div class="wrap-login100">
             <div class="login100-pic js-tilt" data-tilt>
@@ -34,8 +34,8 @@
                     Register
                 </span>
                 <div class="wrap-input100 validate-input" data-validate="Nama lengkap belum terpenuhi">
-                    <input class="input100" type="name" id="name" name="name" placeholder="Masukan Nama">
-                    <span class="focus-input100"></span>
+                    <input class="input100" type="name" id="name" name="name" placeholder="Masukan Nama" value="<?= set_value('name') ?>">
+                    <span class=" focus-input100"></span>
                     <span class="symbol-input100">
                         <i class="fa fa-user" aria-hidden="true"></i>
                     </span>
@@ -50,21 +50,13 @@
                     <?= form_error('email', '<small class ="text-danger pl-3">', '</small>'); ?>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="password salah">
+                <div class="wrap-input100 validate-input" data-validate="password belum isi">
                     <input class="input100" type="password" id="password" name="password" placeholder="Password">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
                         <i class="fa fa-lock" aria-hidden="true"></i>
                     </span>
                     <?= form_error('password', '<small class ="text-danger pl-3">', '</small>'); ?>
-                </div>
-
-                <div class="wrap-input100 validate-input" data-validate="password salah">
-                    <input class="input100" type="password" id="cpassword" name="cpassword" placeholder="Confirm Password">
-                    <span class="focus-input100"></span>
-                    <span class="symbol-input100">
-                        <i class="fa fa-lock" aria-hidden="true"></i>
-                    </span>
                 </div>
 
                 <div class="container-login100-form-btn">

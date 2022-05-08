@@ -34,6 +34,7 @@ class dashboard extends CI_Controller
     function edit($koperasi_id)
     {
         $data['koperasii'] = $this->mselect->getById($koperasi_id);
+        $data['datakabkot'] = $this->mselect->get_koperasi_id($koperasi_id)->result();
         $this->load->view('crud/edit', $data);
     }
     //edit koperasi

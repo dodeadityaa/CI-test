@@ -80,8 +80,8 @@
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
+                                    </tbody>
                                     <tfoot>
-                                        <tr>
                                         <tr>
                                             <th>No</th>
                                             <th>Koperasi</th>
@@ -92,7 +92,6 @@
                                             <th>NIK</th>
                                             <th>Sertifikat</th>
                                             <th></th>
-                                        </tr>
                                         </tr>
                                     </tfoot>
                                 </table>

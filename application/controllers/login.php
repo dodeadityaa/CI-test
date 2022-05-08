@@ -38,7 +38,7 @@ class login extends CI_Controller
 	public function loginin()
 	{
 		$email = $this->input->post('email');
-		$password = $this->input->post('password2');
+		$password = $this->input->post('password');
 
 		$user = $this->db->get_where('user', ['email' => $email])->row_array();
 
@@ -64,6 +64,6 @@ class login extends CI_Controller
 		$this->load->driver('cache');
 		$this->cache->clean();
 		ob_clean();
-		redirect('login');
+		redirect('awal');
 	}
 }

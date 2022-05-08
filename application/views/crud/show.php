@@ -86,15 +86,18 @@
                     </tr>
                     <tr style="background-color:White;">
                         <td style="white-space:nowrap;">Kelurahan / Desa</td>
-                        <td style="white-space:nowrap;"><?php echo $koperasii->id_desa; ?></td>
+                        <?php foreach ($datakabkot as $row) : ?>
+                            <td style="white-space:nowrap;"><?php echo $row->nama_desa; ?></td>
+                        <?php endforeach ?>
+
                     </tr>
                     <tr style="background-color:#D0E2F8;">
                         <td style="white-space:nowrap;">Kecamatan</td>
-                        <td style="white-space:nowrap;"><?php echo $koperasii->id_kecamatan; ?></td>
+                        <td style="white-space:nowrap;"><?php echo $row->nama_kecamatan; ?></td>
                     </tr>
                     <tr style="background-color:White;">
                         <td style="white-space:nowrap;">Kabupaten</td>
-                        <td style="white-space:nowrap;"><?php echo $koperasii->id_kabkot; ?></td>
+                        <td style="white-space:nowrap;"><?php echo $row->nama_kabkot; ?></td>
                     </tr>
                     <tr style="background-color:#D0E2F8;">
                         <td style="white-space:nowrap;">Bentuk Koperasi</td>

@@ -27,17 +27,12 @@ class register extends CI_Controller
     }
     public function index()
     {
-        $this->form_validation->set_rules('password2', 'Password', 'matchess[password4]', [
-            'matchess' => 'password tidak sama!!!'
-        ]);
-        $this->form_validation->set_rules('password4', 'Password', 'matchess[password2]');
         $this->form_validation->set_rules('email', 'Email', 'is_unique[user.email]', [
             'is_unique' => 'Email Sudah Terdaftar'
         ]);
 
         if ($this->form_validation->run() == false) {
             $this->load->view('register');
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Registrasi Failed</div>');
         } else {
             $data = [
                 'name' => htmlspecialchars($this->input->post('name', true)),

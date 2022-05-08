@@ -59,19 +59,22 @@
                                     <div class="form-group">
                                         <label>Kota/Kabupaten</label>
                                         <select name="kabkotss2" id="kabkotss2" class="form-control input-lg kabkotss2" required onkeypress="return ;" data-dependent="KabupatenKota">
-                                            <option value="<?php echo $koperasii->id_kabkot; ?>" selected><?php echo $koperasii->id_kabkot; ?></option>
+                                            <?php foreach ($datakabkot as $row) : ?>
+                                                <option value="<?= $koperasii->id_kabkot ?>"><?= $row->nama_kabkot ?></option>
+                                            <?php endforeach ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Kecamatan</label>
                                         <select name="kecamm2" id="kecamm2" class="form-control input-lg kecamm2" required onkeypress="return ;" data-dependent="kecamm2">
-                                            <option value="<?php echo $koperasii->id_kecamatan; ?>" selected><?php echo $koperasii->id_kecamatan; ?></option>
+                                            <option value="<?= $koperasii->id_kecamatan ?>"><?= $row->nama_kecamatan ?></option>
+
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Desa</label>
                                         <select name="desass2" id="desass2" class="form-control input-lg desass2" required onkeypress="return ;" data-dependent="desass2">
-                                            <option value="<?php echo $koperasii->id_desa; ?>" selected><?php echo $koperasii->id_desa; ?></option>
+                                            <option value="<?php echo $koperasii->id_desa; ?>" selected><?php echo $row->nama_desa; ?></option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -92,43 +95,81 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Bentuk Koperasi</label>
-                                        <select name="bentuk_koperasi" id="bentuk_koperasi" class="form-control input-lg dynamic" required onkeypress="return ;" data-dependent="bentuk_koperasis" required onkeypress="return ;">
-                                            <option value="">masukan Keterangan</option>
-                                            <option value="<?php echo $koperasii->bentuk_koperasi; ?>" selected>Primer Kabupaten/Kota</option>
-                                            <option value="<?php echo $koperasii->bentuk_koperasi; ?>" selected>Sekunder Kabupaten/Kota</option>
+                                        <select name="bentuk_koperasi" id="bentuk_koperasi" class="form-control" data-dependent="bentuk_koperasis" required onkeypress="return ;">
+                                            <option value="">Masukan Keterangan</option>
+                                            <?php
+                                            if ($koperasii->bentuk_koperasi == "Primer Kabupaten/Kota") echo "<option value='Primer Kabupaten/Kota' selected>Primer Kabupaten/Kota</option>";
+                                            else echo "<option value='Primer Kabupaten/Kota'>Primer Kabupaten/Kota</option>";
+
+                                            if ($koperasii->bentuk_koperasi == "Sekunder Kabupaten/Kota") echo "<option value='Sekunder Kabupaten/Kota' selected>Sekunder Kabupaten/Kota</option>";
+                                            else echo "<option value='Sekunder Kabupaten/Kota'>Sekunder Kabupaten/Kota</option>";
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Jenis Koperasi</label>
                                         <select name="jenis_koperasi" id="jenis_koperasi" class="form-control input-lg dynamic" required onkeypress="return ;" data-dependent="jenis_koperasis">
-                                            <option><?php echo $koperasii->jenis_koperasi; ?></option>
-                                            <option>Simpan Pinjam</option>
-                                            <option>Konsumen</option>
-                                            <option>produsen</option>
-                                            <option>pemasaran</option>
-                                            <option>jasa</option>
+                                            <option value="">Masukan Keterangan</option>
+                                            <?php
+                                            if ($koperasii->jenis_koperasi == "Simpan Pinjam") echo "<option value='Simpan Pinjam' selected>Simpan Pinjam</option>";
+                                            else echo "<option value='Simpan Pinjam'>Simpan Pinjam</option>";
+
+                                            if ($koperasii->jenis_koperasi == "Konsumen") echo "<option value='Konsumen' selected>Konsumen</option>";
+                                            else echo "<option value='Konsumen'>Konsumen</option>";
+
+                                            if ($koperasii->jenis_koperasi == "produsen") echo "<option value='produsen' selected>produsen</option>";
+                                            else echo "<option value='produsen'>produsen</option>";
+
+                                            if ($koperasii->jenis_koperasi == "pemasaran") echo "<option value='pemasaran' selected>pemasaran</option>";
+                                            else echo "<option value='pemasaran'>pemasaran</option>";
+
+                                            if ($koperasii->jenis_koperasi == "jasa") echo "<option value='jasa' selected>jasa</option>";
+                                            else echo "<option value='jasa'>jasa</option>";
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Kelompok Koperasi</label>
                                         <select name="kelompok_koperasi" id="kelompok_koperasi" class="form-control input-lg dynamic" required onkeypress="return ;" data-dependent="kelompok_koperasis">
-                                            <option><?php echo $koperasii->kelompok_koperasi; ?></option>
-                                            <option>Kop. Simpan Pinjam</option>
-                                            <option>Kop. Konsumen</option>
-                                            <option>Kop. produsen</option>
-                                            <option>Kop. pemasaran</option>
-                                            <option>Kop. jasa</option>
+                                            <option value="">Masukan Keterangan</option>
+                                            <?php
+                                            if ($koperasii->kelompok_koperasi == "Kop. Simpan Pinjam") echo "<option value='Kop. Simpan Pinjam' selected>Kop. Simpan Pinjam</option>";
+                                            else echo "<option value='Kop. Simpan Pinjam'>Kop. Simpan Pinjam</option>";
+
+                                            if ($koperasii->kelompok_koperasi == "Kop. Konsumen") echo "<option value='Kop. Konsumen' selected>Kop. Konsumen</option>";
+                                            else echo "<option value='Kop. Konsumen'>Kop. Konsumen</option>";
+
+                                            if ($koperasii->kelompok_koperasi == "Kop. produsen") echo "<option value='Kop. produsen' selected>Kop. produsen</option>";
+                                            else echo "<option value='Kop. produsen'>Kop. produsen</option>";
+
+                                            if ($koperasii->kelompok_koperasi == "Kop. pemasaran") echo "<option value='Kop. pemasaran' selected>Kop. pemasaran</option>";
+                                            else echo "<option value='Kop. pemasaran'>Kop. pemasaran</option>";
+
+                                            if ($koperasii->kelompok_koperasi == "Kop. jasa") echo "<option value='Kop. jasa' selected>Kop. jasa</option>";
+                                            else echo "<option value='Kop. jasa'>Kop. jasa</option>";
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Sektor Usaha</label>
                                         <select name="sektor_usaha" id="sektor_usaha" class="form-control input-lg dynamic" required onkeypress="return ;" data-dependent="sektor_usahas">
-                                            <option><?php echo $koperasii->sektor_usaha; ?></option>
-                                            <option>Jasa Angkutan</option>
-                                            <option>Jasa Perlayaran</option>
-                                            <option>Jasa Fotokopi</option>
-                                            <option>Jasa Perparkiran</option>
-                                            <option>Jasa Asuransi</option>
+                                            <option value="">Masukan Keterangan</option>
+                                            <?php
+                                            if ($koperasii->sektor_usaha == "Jasa Angkutan") echo "<option value='Jasa Angkutan' selected>Jasa Angkutan</option>";
+                                            else echo "<option value='Jasa Angkutan'>Jasa Angkutan</option>";
+
+                                            if ($koperasii->sektor_usaha == "Jasa Perlayaran") echo "<option value='Jasa Perlayaran' selected>Jasa Perlayaran</option>";
+                                            else echo "<option value='Jasa Perlayaran'>Jasa Perlayaran</option>";
+
+                                            if ($koperasii->sektor_usaha == "Jasa Fotokopi") echo "<option value='Jasa Fotokopi' selected>Jasa Fotokopi</option>";
+                                            else echo "<option value='Jasa Fotokopi'>Jasa Fotokopi</option>";
+
+                                            if ($koperasii->sektor_usaha == "Jasa Perparkiran") echo "<option value='Jasa Perparkiran' selected>Jasa Perparkiran</option>";
+                                            else echo "<option value='Jasa Perparkiran'>Jasa Perparkiran</option>";
+
+                                            if ($koperasii->sektor_usaha == "Jasa Asuransi") echo "<option value='Jasa Asuransi' selected>Jasa Asuransi</option>";
+                                            else echo "<option value='Jasa Asuransi'>Jasa Asuransi</option>";
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
@@ -192,9 +233,14 @@
                                     <div class="form-group">
                                         <label>Status NIK</label>
                                         <select name="status_nik" id="status_nik" class="form-control input-lg dynamic" required onkeypress="return ;" data-dependent="status_niks">
-                                            <option><?php echo $koperasii->status_nik; ?></option>
-                                            <option>Sertifikat - Aktif</option>
-                                            <option>Sertifikat - Expired</option>
+                                            <option value="">Masukan Keterangan</option>
+                                            <?php
+                                            if ($koperasii->status_nik == "Sertifikat - Aktif") echo "<option value='Sertifikat - Aktif' selected>Sertifikat - Aktif</option>";
+                                            else echo "<option value='Sertifikat - Aktif'>Sertifikat - Aktif</option>";
+
+                                            if ($koperasii->status_nik == "Sertifikat - Expired") echo "<option value='Sertifikat - Expired' selected>Sertifikat - Expired</option>";
+                                            else echo "<option value='Sertifikat - Expired'>Sertifikat - Expired</option>";
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -204,13 +250,20 @@
                                     <div class="form-group">
                                         <label>Status Grade</label>
                                         <select name="status_grade" id="status_grade" class="form-control input-lg dynamic" required onkeypress="return ;" data-dependent="status_grades">
-                                            <option><?php echo $koperasii->status_grade; ?></option>
-                                            <option>A</option>
-                                            <option>B</option>
-                                            <option>C</option>
-                                            <option>D</option>
-                                            <option>E</option>
-                                            <option>F</option>
+                                            <option value="">Masukan Keterangan</option>
+                                            <?php
+                                            if ($koperasii->status_grade == "A") echo "<option value='A' selected>A</option>";
+                                            else echo "<option value='A'>A</option>";
+
+                                            if ($koperasii->status_grade == "B") echo "<option value='B' selected>B</option>";
+                                            else echo "<option value='B'>B</option>";
+
+                                            if ($koperasii->status_grade == "C") echo "<option value='C' selected>C</option>";
+                                            else echo "<option value='C'>C</option>";
+
+                                            if ($koperasii->status_grade == "D") echo "<option value='D' selected>D</option>";
+                                            else echo "<option value='D'>D</option>";
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
@@ -241,16 +294,13 @@
     <!-- AdminLTE for demo purposes -->
     <script src="<?= base_url('admincss/') ?>dist/js/demo.js"></script>
     <script src="<?= base_url('admincss/') ?>jsjs/jquery-3.2.1.min.js"></script>
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
         $(document).ready(function() {
-            //call function get data edit
-            get_data_edit();
 
-            $('.kabkotss2').change(function() {
+            $('#kabkotss2').change(function() {
                 var id = $(this).val();
-                var kecamatans = "<?php echo $kecamatans; ?>";
                 $.ajax({
-                    url: "<?php echo site_url('dashboard/getdatakecamatan'); ?>",
+                    url: "<?php echo site_url('Select/getdatakecamatan'); ?>",
                     method: "POST",
                     data: {
                         id: id
@@ -259,46 +309,43 @@
                     dataType: 'json',
                     success: function(data) {
 
-                        $('select[name="kecamm2"]').empty();
+                        var html = '';
+                        var i;
+                        for (i = 0; i < data.length; i++) {
+                            html += '<option value=' + data[i].id + '>' + data[i].nama_kecamatan + '</option>';
+                        }
+                        $('#kecamm2').html(html);
 
-                        $.each(data, function(key, value) {
-                            if (kecamatans == value.id) {
-                                $('select[name="kecamm2"]').append('<option value="' + value.id + '" selected>' + value.nama_kecamatan + '</option>').trigger('change');
-                            } else {
-                                $('select[name="kecamm2"]').append('<option value="' + value.id + '">' + value.nama_kecamatan + '</option>');
-                            }
-                        });
+                    }
+                });
+                return false;
+            });
+            $('#kecamm2').change(function() {
+                var id = $(this).val();
+                $.ajax({
+                    url: "<?php echo site_url('Select/getdatadesa'); ?>",
+                    method: "POST",
+                    data: {
+                        id: id
+                    },
+                    async: true,
+                    dataType: 'json',
+                    success: function(data) {
+
+                        var html = '';
+                        var i;
+                        for (i = 0; i < data.length; i++) {
+                            html += '<option value=' + data[i].id + '>' + data[i].nama_desa + '</option>';
+                        }
+                        $('#desass2').html(html);
 
                     }
                 });
                 return false;
             });
 
-            //load data for edit
-            function get_data_edit() {
-                var id = $('[name="koperasi_id"]').val();
-                $.ajax({
-                    url: "<?php echo site_url('dashboard/get_data_edit'); ?>",
-                    method: "POST",
-                    data: {
-                        id: id
-                    },
-                    async: true,
-                    dataType: 'json',
-                    success: function(data) {
-                        $.each(data, function(i, item) {
-                            $('[name="product_name"]').val(data[i].product_name);
-                            $('[name="category"]').val(data[i].product_category_id).trigger('change');
-                            $('[name="sub_category"]').val(data[i].product_subcategory_id).trigger('change');
-                            $('[name="product_price"]').val(data[i].product_price);
-                        });
-                    }
-
-                });
-            }
-
         });
-    </script> -->
+    </script>
 
     </section>
     </div>

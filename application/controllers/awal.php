@@ -33,7 +33,8 @@ class awal extends CI_Controller
     function show($koperasi_id)
     {
         $data['koperasii'] = $this->mselect->getById($koperasi_id);
-        $this->load->view('crud/show', $data, $data);
+        $data['datakabkot'] = $this->mselect->get_koperasi_id($koperasi_id)->result();
+        $this->load->view('crud/show', $data);
     }
 
     function get_data_show()
